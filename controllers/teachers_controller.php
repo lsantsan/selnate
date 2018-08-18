@@ -49,7 +49,7 @@ class TeachersController
     {
         $create_test_url = "?controller=teachers&action=create_test";
 
-        //OVERLOADING NEW_TEST method.        
+        //OVERLOADING NEW_TEST method.
         foreach (func_get_args() as $screenUpdate) { //  1 parameter => screenUpdate[]
             if (array_key_exists('error', $screenUpdate)) {
                 $message_type = "error_message";
@@ -204,7 +204,7 @@ class TeachersController
     {
         $update_test_url = "?controller=teachers&action=update_test";
 
-        //OVERLOADING EDIT_TEST method.        
+        //OVERLOADING EDIT_TEST method.
         foreach (func_get_args() as $screenUpdate) { //  1 parameter => screenUpdate[]
             if (array_key_exists('error', $screenUpdate)) {
                 $message_type = "error_message";
@@ -258,7 +258,7 @@ class TeachersController
     {
         $update_account_url = "?controller=teachers&action=update_account";
 
-        //OVERLOADING EDIT_ACCOUNT method.        
+        //OVERLOADING EDIT_ACCOUNT method.
         foreach (func_get_args() as $screenUpdate) { //  1 parameter => screenUpdate[]
             if (empty($screenUpdate)) {
                 echo "ScreenUpdate is empty";
@@ -376,7 +376,7 @@ class TeachersController
             $this->edit_account($lv_screenUpdate);
         }
 
-// ******************** UPDATE PROCESS ***********************************    
+// ******************** UPDATE PROCESS ***********************************
         if (empty($lv_screenUpdate)) {
 
             $lv_adminID = 0; //This proc call has a hardcoded '0' because adminID is not being used.
@@ -470,7 +470,7 @@ class TeachersController
 
     public function login()
     {
-        //OVERLOADING LOGIN method.        
+        //OVERLOADING LOGIN method.
         foreach (func_get_args() as $error_messages) { //  1 parameter => error message
             $error_message = $error_messages;
             $show_error = "display:block";
@@ -602,7 +602,27 @@ class TeachersController
             $semesterName .= ' ' . '20' . $semesterCode[1] . $semesterCode[2]; // i.e. Winter 2017
             $resultList[$semesterName][] = $test;
         }
+        uksort($resultList, array($this, "sortSemesters"));
         return $resultList;
+    }
+
+    private function sortSemesters($name1, $name2){
+        $name1Pieces = explode(" ", $name1);
+        $name2Pieces = explode(" ", $name2);
+
+        $semester1 = $name1Pieces[0];
+        $semester2 = $name2Pieces[0];
+
+        $year1 = intval($name1Pieces[1]);
+        $year2 = intval($name2Pieces[1]);
+
+        if($year1 > $year2) return -1;
+        if($year1 == $year2) {
+            if( $semester1 == 'Fall' && $semester2 != 'Fall') return -1;
+            if( $semester1 == 'Summer' && $semester2 != 'Fall') return -1;
+            return 1;
+        }
+        if($year1 < $year2) return 1;
     }
 
 
