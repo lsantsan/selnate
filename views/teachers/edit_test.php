@@ -10,12 +10,12 @@
                     <form id="create_form" action='<?php echo $update_test_url . '&id=' . $lv_testObj->id ?>' method="post" >
                         <div id="row_container">
                             <div>
-                                <label <?php echo isset($duration_error) ? $duration_error : "" ?>>Duration</label>                         
+                                <label <?php echo isset($duration_error) ? $duration_error : "" ?>>Duration</label>
                                 <br/>
-                                <input id="duration_input" type="number" name="duration" min="0" max="120" step="1" value="<?php echo $lv_testObj->duration ?>"><span> minutes.</span>                        
+                                <input id="duration_input" type="number" name="duration" min="0" max="120" step="1" value="<?php echo $lv_testObj->duration ?>"><span> minutes.</span>
                             </div>
                             <div>
-                                <label>Semester</label>                     
+                                <label>Semester</label>
                                 <br/>
                                 <select name="semester" id="semester_dropdown">
                                     <option value="W"<?php
@@ -26,11 +26,11 @@
                                     ?>>Summer</option>
                                     <option value="F"<?php
                                     echo ($lv_testSemester == 'F') ? "selected='selected'" : ""
-                                    ?>>Fall</option>                            
-                                </select>                              
+                                    ?>>Fall</option>
+                                </select>
                             </div>
                             <div>
-                                <label>Test Type</label>                     
+                                <label>Test Type</label>
                                 <br/>
                                 <select name="type" id="type_dropdown">
                                     <option value="E"<?php
@@ -43,11 +43,14 @@
                                         echo ($lv_testType == 'T') ? "selected='selected'" : ""
                                     ?>>Timed</option>
                                     <option value="M"<?php
-                                        echo ($lv_testType == 'M') ? "selected='selected'" : "" 
+                                        echo ($lv_testType == 'M') ? "selected='selected'" : ""
                                     ?>>Mid-Term</option>
                                     <option value="F"<?php
                                         echo ($lv_testType == 'F') ? "selected='selected'" : ""
                                     ?>>Final</option>
+                                    <option value="P"<?php
+                                    echo ($lv_testType == 'P') ? "selected='selected'" : ""
+                                    ?>>Placement</option>
                                 </select>
                             </div>
                         </div>
@@ -62,10 +65,10 @@
                         <br/>
                         <div id="bottom_container">
                             <div class="error_message_container">
-                                <span class="<?php echo isset($message_type) ? $message_type : "" ?>" 
+                                <span class="<?php echo isset($message_type) ? $message_type : "" ?>"
                                       <?php echo isset($show_message) ? $show_message : "" ?>>
                                           <?php echo (isset($message) && $message != "") ? $message : "" ?>
-                                </span>              
+                                </span>
                             </div>
                             <div class="button_container">
                                 <input <?php echo isset($lv_isDisabled) ? $lv_isDisabled : "" ?> class="button" type = "submit" value = "Update"/>
@@ -75,6 +78,6 @@
                 </form>
             </div>
         </div>
-    </div>   
+    </div>
 </div>
-</main>           
+</main>

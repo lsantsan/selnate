@@ -18,12 +18,12 @@
                     <form id="create_test_form" action='<?php echo $create_test_url ?>' method="post" >
                         <div id="row_container">
                             <div>
-                                <label <?php echo isset($duration_error) ? $duration_error : "" ?>>Duration</label>                         
+                                <label <?php echo isset($duration_error) ? $duration_error : "" ?>>Duration</label>
                                 <br/>
-                                <input id="duration_input" type="number" name="duration" min="0" max="120" step="1" value="<?php echo isset($_POST['duration']) ? $_POST['duration'] : '30' ?>"><span> minutes.</span>                        
+                                <input id="duration_input" type="number" name="duration" min="0" max="120" step="1" value="<?php echo isset($_POST['duration']) ? $_POST['duration'] : '30' ?>"><span> minutes.</span>
                             </div>
                             <div>
-                                <label>Semester</label>                     
+                                <label>Semester</label>
                                 <br/>
                                 <select name="semester" id="semester_dropdown">
                                     <option value="W"<?php
@@ -37,11 +37,11 @@
                                     <option value="F"<?php
                                     echo isset($_POST['semester']) ?
                                             ($_POST['semester'] == 'F') ? "selected='selected'" : "" : ""
-                                    ?>>Fall</option>                            
-                                </select>                              
+                                    ?>>Fall</option>
+                                </select>
                             </div>
                             <div>
-                                <label>Test Type</label>                     
+                                <label>Test Type</label>
                                 <br/>
                                 <select name="type" id="type_dropdown">
                                     <option value="E"<?php
@@ -66,7 +66,7 @@
                                     ?>>Final</option>
                                     <option value="P"<?php
                                     echo isset($_POST['type']) ?
-                                            ($_POST['type'] == 'F') ? "selected='selected'" : "" : ""
+                                            ($_POST['type'] == 'P') ? "selected='selected'" : "" : ""
                                     ?>>Placement</option>
                                 </select>
                             </div>
@@ -82,10 +82,10 @@
                         <br/>
                         <div id="bottom_container">
                             <div class="error_message_container">
-                                <span class="<?php echo isset($message_type) ? $message_type : "" ?>" 
+                                <span class="<?php echo isset($message_type) ? $message_type : "" ?>"
                                       <?php echo isset($show_message) ? $show_message : "" ?>>
                                           <?php echo (isset($message) && $message != "") ? $message : "" ?>
-                                </span>              
+                                </span>
                             </div>
                             <div class="button_container">
                                 <input <?php echo isset($lv_isDisabled) ? $lv_isDisabled : "" ?> class="button" id="create_button" type = "submit" value = "Create"/>
@@ -95,6 +95,6 @@
                 </form>
             </div>
         </div>
-    </div>   
+    </div>
 </div>
-</main>           
+</main>
